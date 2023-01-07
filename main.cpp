@@ -1,6 +1,10 @@
 #include <iostream>
+#include "headers/Orders.h"
 
 int main() {
-    std::cout << "Hello world" << std::endl;
+    int path {};
+    path = mainMenu();
+    std::cout << "You have chosen " << path << std::endl;
+
     return 0;
 }
