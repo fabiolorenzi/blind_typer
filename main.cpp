@@ -4,11 +4,11 @@
 
 int main() {
     int path {};
-    path = mainMenu();
-
-    if (path == 4) {
-        exitProgram();
+    
+    while (path != 4) {
+        path = mainMenu();
     };
+    exitProgram();
 
     return 0;
 }
