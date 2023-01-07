@@ -1,14 +1,17 @@
 #include <iostream>
 #include "../headers/Orders.h"
 
-int mainMenu() {
-    int decidedPath {-1};
-
+void startScripts() {
     std::cout << std::endl;
     std::cout << "/*------------------*/" << std::endl;
     std::cout << "Welcome to Blind Typer!" << std::endl;
     std::cout << "Developed by F. Lorenzi" << std::endl;
     std::cout << "/*------------------*/" << std::endl;
+}
+
+int mainMenu() {
+    int decidedPath {-1};
+
     std::cout << std::endl;
     std::cout << "Please choose what to do:" << std::endl;
     while (decidedPath == -1) {
