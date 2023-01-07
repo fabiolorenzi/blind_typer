@@ -1,10 +1,14 @@
 #include <iostream>
 #include "headers/Orders.h"
+#include "headers/Exit.h"
 
 int main() {
     int path {};
     path = mainMenu();
-    std::cout << "You have chosen " << path << std::endl;
+
+    if (path == 4) {
+        exitProgram();
+    };
 
     return 0;
 }
