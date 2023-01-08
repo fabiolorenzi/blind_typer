@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 #include "../headers/Read.h"
 
 int menuRead() {
@@ -28,6 +30,20 @@ void returnBack() {
 }
 
 void readSentences() {
+    std::string sentencesPath = "data/sentences.csv";
+    std::ifstream allSentences;
+    allSentences.open(sentencesPath);
+
+    if (allSentences.fail()) {
+        std::cerr << "Error: unable to open the file" << std::endl;
+    };
+
+    while (allSentences.peek() != EOF) {
+        std::string line;
+        getline(allSentences, line, ',');
+        std::cout << line << std::endl;
+    }
+    allSentences.close();
 }
 
 int menuScripts() {
