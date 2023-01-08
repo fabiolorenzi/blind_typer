@@ -3,7 +3,7 @@
 #include "../headers/Exit.h"
 
 int exitProgram() {
-    time_t start, end;
+    time_t start;
 
     std::cout << std::endl;
     std::cout << "See you next time! :)" << std::endl;
