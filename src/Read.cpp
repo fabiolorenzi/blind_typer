@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstdio>
+#include "../rapidjson/include/rapidjson/document.h"
+#include "../rapidjson/include/rapidjson/filereadstream.h"
 #include "../headers/Read.h"
 
 int menuRead() {
@@ -28,7 +31,26 @@ void returnBack() {
 }
 
 void readSentences() {
-    std::cout << "readSentences" << std::endl;
+    FILE* fp = fopen("../data/sentences.json", "r");
+
+    // The code below is to check if the file was opened successfully
+    if (!fp) {
+        std::cerr << "Error: unable to open the file" << std::endl;
+    };
+
+    // Read the file into a  buffer
+    char readBuffer[65536];
+    rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+
+    // The code below is to parse the JSON
+    rapidjson::Document val;
+    val.ParseStream(is);
+
+    // The code below is to close the file
+    fclose(fp);
+
+    std::cout << "Created by: " << val["created_by"].GetString() << std::endl;
+    std::cout << "Text: " << val["text"].GetString() << std::endl;
 }
 
 int menuScripts() {
