@@ -1,5 +1,4 @@
 #include <iostream>
-#include <nlohmann/json.hpp>
 #include "../headers/Read.h"
 
 int menuRead() {
@@ -28,7 +27,9 @@ void returnBack() {
     std::cout << "/*----------------------*/" << std::endl;
 }
 
-void readSentences() {}
+void readSentences() {
+    std::cout << "readSentences" << std::endl;
+}
 
 int menuScripts() {
     std::cout << std::endl;
