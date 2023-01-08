@@ -1,10 +1,12 @@
 {
     "data": [
         {
+            "id": 0,
             "created_by": "F.Lorenzi",
             "text": "This is a test. Hello world!"
         },
         {
+            "id": 1,
             "created_by": "F.Lorenzi",
             "text": "This is another test. Hello again!"
         }

@@ -3,10 +3,10 @@
 
 void startScripts() {
     std::cout << std::endl;
-    std::cout << "/*------------------*/" << std::endl;
+    std::cout << "/*----------------------*/" << std::endl;
     std::cout << "Welcome to Blind Typer!" << std::endl;
     std::cout << "Developed by F. Lorenzi" << std::endl;
-    std::cout << "/*------------------*/" << std::endl;
+    std::cout << "/*----------------------*/" << std::endl;
 }
 
 int mainMenu() {

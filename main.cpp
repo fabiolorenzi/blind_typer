@@ -1,6 +1,7 @@
 #include <iostream>
 #include "headers/Exit.h"
 #include "headers/Orders.h"
+#include "headers/Read.h"
 
 int main() {
     int path {};
@@ -12,7 +13,7 @@ int main() {
                 std::cout << "Temporary 0" << std::endl;
                 break;
             case 1:
-                std::cout << "Temporary 1" << std::endl;
+                menuScripts();
                 break;
             case 2:
                 std::cout << "Temporary 2" << std::endl;
