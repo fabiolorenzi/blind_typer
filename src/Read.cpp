@@ -1,4 +1,5 @@
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include "../headers/Read.h"
 
 int menuRead() {
@@ -27,6 +28,8 @@ void returnBack() {
     std::cout << "/*----------------------*/" << std::endl;
 }
 
+void readSentences() {}
+
 int menuScripts() {
     std::cout << std::endl;
     std::cout << "/*------------------*/" << std::endl;
@@ -37,7 +40,7 @@ int menuScripts() {
         path = menuRead();
         switch(path) {
             case 0:
-                std::cout << "Temporary Read 0" << std::endl;
+                readSentences();
                 break;
             case 1:
                 std::cout << "Temporary Read 1" << std::endl;
