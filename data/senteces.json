@@ -1,5 +1,7 @@
-{
-    "id": 0,
-    "created_by": "F.Lorenzi",
-    "text": "This is a test. Hello world!"
-}
+[
+    {
+        "id": 0,
+        "created_by": "F.Lorenzi",
+        "text": "This is a test. Hello world!"
+    }
+]
