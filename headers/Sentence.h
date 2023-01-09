@@ -4,9 +4,9 @@
 
 class Sentence {
     public:
-        std::string id;
+        int id;
         std::string created_by;
         std::string text;
         Sentence();
-        Sentence(std::string _id, std::string _created_by, std::string _text);
+        Sentence(int _id, std::string _created_by, std::string _text);
 };
