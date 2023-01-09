@@ -1,6 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 #include "../headers/Add.h"
-#include "../headers/User.h"
+#include "../headers/Sentence.h"
 
 int menuAdd() {
     int decidedPath {-1};
@@ -28,7 +31,72 @@ void returbBack() {
     std::cout << "/*----------------------*/" << std::endl;
 }
 
-void addSentence() {}
+int getMaxId() {
+    std::string sentencesPath = "data/sentences.txt";
+    std::ifstream allSentences;
+    allSentences.open(sentencesPath);
+
+    if (allSentences.fail()) {
+        return 0;
+    };
+
+    int result {};
+
+    while (allSentences.peek() != EOF) {
+        std::string line;
+        getline(allSentences, line, '*');
+
+        std::istringstream ss(line);
+        std::string part;
+        std::vector<std::string> lineData;
+        while (std::getline(ss, part, '|')) {
+            lineData.push_back(part);
+        };
+        result = std::stoi(lineData[0]);
+    };
+    allSentences.close();
+    return result + 1;
+}
+
+std::string getSentecesString() {
+    std::string sentencesPath = "data/sentences.txt";
+    std::ifstream allSentences;
+    allSentences.open(sentencesPath);
+
+    std::string resultingString;
+
+    while (allSentences.peek() != EOF) {
+        std::string line;
+        getline(allSentences, line, '*');
+        resultingString.append(line);
+        resultingString.append("*");
+    };
+    return resultingString;
+}
+
+void addSentence() {
+    std::cout << std::endl;
+    Sentence sentence = Sentence();
+
+    sentence.id = getMaxId();
+
+    std::cout << "Created by:" << std::endl;
+    std::cin >> sentence.created_by;
+    std::cout << std::endl;
+    std::cout << "From:" << std::endl;
+    std::cin >> sentence.from;
+    std::cout << std::endl;
+    std::cout << "Text:" << std::endl;
+    std::cin >> sentence.text;
+
+    std::string sentenceString;
+    sentenceString = std::to_string(sentence.id) + '|' + sentence.created_by + '|' + sentence.from + '|' + sentence.text + '*';
+
+    std::string currentValues = getSentecesString();
+    std::ofstream sentencesFile("data/sentences.txt");
+    sentencesFile << currentValues + sentenceString;
+    sentencesFile.close();
+}
 
 int addScripts() {
     std::cout << std::endl;
