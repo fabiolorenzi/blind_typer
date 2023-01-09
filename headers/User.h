@@ -3,10 +3,10 @@
 class User {
     public:
         int id;
-        float minSpeed;
-        float maxSpeed;
-        float averageSpeed;
+        int minSpeed;
+        int maxSpeed;
+        int averageSpeed;
         int sessionsFinished;
         User();
-        User(int _id, float _minSpeed, float _maxSpeed, float _averageSpeed, int _sessionsFinished);
+        User(int _id, int _minSpeed, int _maxSpeed, int _averageSpeed, int _sessionsFinished);
 };

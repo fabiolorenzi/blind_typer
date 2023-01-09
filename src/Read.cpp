@@ -4,6 +4,7 @@
 #include <sstream>
 #include "../headers/Read.h"
 #include "../headers/Sentence.h"
+#include "../headers/User.h"
 
 int menuRead() {
     int decidedPath {-1};
@@ -62,6 +63,33 @@ void readSentences() {
     allSentences.close();
 }
 
+void readUser() {
+    std::cout << std::endl;
+    std::string userPath = "data/user.txt";
+    std::ifstream userData;
+    userData.open(userPath);
+
+    if (userData.fail()) {
+        std::cerr << "Error: unable to open the file" << std::endl;
+    };
+
+    std::vector<int> tempValues;
+    std::string temp;
+    while (std::getline(userData, temp, '|')) {
+        tempValues.push_back(std::stoi(temp));
+    };
+    User user = User(tempValues[0], tempValues[1], tempValues[2], tempValues[3], tempValues[4]);
+
+    std::cout << "ID: " << user.id << std::endl;
+    std::cout << "Min speed: " << user.minSpeed << std::endl;
+    std::cout << "Max speed: " << user.maxSpeed << std::endl;
+    std::cout << "Aver speed: " << user.averageSpeed << std::endl;
+    std::cout << "Sessions: " << user.sessionsFinished << std::endl;
+    std::cout << std::endl;
+
+    userData.close();
+}
+
 int menuScripts() {
     std::cout << std::endl;
     std::cout << "/*------------------*/" << std::endl;
@@ -75,7 +103,7 @@ int menuScripts() {
                 readSentences();
                 break;
             case 1:
-                std::cout << "Temporary Read 1" << std::endl;
+                readUser();
                 break;
         };
     };

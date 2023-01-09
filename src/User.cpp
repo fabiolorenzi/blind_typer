@@ -8,7 +8,7 @@ User::User() {
     this->sessionsFinished = 0;
 }
 
-User::User(int _id, float _minSpeed, float _maxSpeed, float _averageSpeed, int _sessionFinished) {
+User::User(int _id, int _minSpeed, int _maxSpeed, int _averageSpeed, int _sessionFinished) {
     this->id = _id;
     this->minSpeed = _minSpeed;
     this->maxSpeed = _maxSpeed;
