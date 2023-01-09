@@ -53,10 +53,11 @@ void readSentences() {
         while (std::getline(ss, part, '|')) {
             lineData.push_back(part);
         };
-        Sentence sentence = Sentence(std::stoi(lineData[0]), lineData[1], lineData[2]);
+        Sentence sentence = Sentence(std::stoi(lineData[0]), lineData[1], lineData[2], lineData[3]);
 
         std::cout << "ID: " << sentence.id << std::endl;
         std::cout << "Created by: " << sentence.created_by << std::endl;
+        std::cout << "From: " << sentence.from << std::endl;
         std::cout << "Text: " << sentence.text << std::endl;
         std::cout << std::endl;
     };
