@@ -91,7 +91,7 @@ void readUser() {
     userData.close();
 }
 
-int menuScripts() {
+int readScripts() {
     std::cout << std::endl;
     std::cout << "/*------------------*/" << std::endl;
     std::cout << "Read Menu" << std::endl;

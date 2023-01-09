@@ -1,4 +1,5 @@
 #include <iostream>
+#include "headers/Add.h"
 #include "headers/Exit.h"
 #include "headers/Orders.h"
 #include "headers/Read.h"
@@ -13,10 +14,10 @@ int main() {
                 std::cout << "Temporary 0" << std::endl;
                 break;
             case 1:
-                menuScripts();
+                readScripts();
                 break;
             case 2:
-                std::cout << "Temporary 2" << std::endl;
+                addScripts();
                 break;
             case 3:
                 std::cout << "Temporary 3" << std::endl;

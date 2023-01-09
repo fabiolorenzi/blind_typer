@@ -1,7 +1,7 @@
 #pragma once
 
 int menuRead();
-int menuScripts();
+int readScripts();
 void readSentences();
 void readUser();
 void returnBack();
