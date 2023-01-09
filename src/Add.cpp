@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <istream>
 #include <sstream>
 #include <vector>
 #include "../headers/Add.h"
@@ -75,19 +76,19 @@ std::string getSentecesString() {
 }
 
 void addSentence() {
-    std::cout << std::endl;
     Sentence sentence = Sentence();
-
     sentence.id = getMaxId();
 
+    std::cout << std::endl;
     std::cout << "Created by:" << std::endl;
-    std::cin >> sentence.created_by;
+    std::cin.ignore();
+    std::getline(std::cin, sentence.created_by);
     std::cout << std::endl;
     std::cout << "From:" << std::endl;
-    std::cin >> sentence.from;
+    std::getline(std::cin, sentence.from);
     std::cout << std::endl;
     std::cout << "Text:" << std::endl;
-    std::cin >> sentence.text;
+    std::getline(std::cin, sentence.text);
 
     std::string sentenceString;
     sentenceString = std::to_string(sentence.id) + '|' + sentence.created_by + '|' + sentence.from + '|' + sentence.text + '*';
