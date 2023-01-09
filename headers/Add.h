@@ -3,4 +3,4 @@
 int menuAdd();
 int addScripts();
 void addSentence();
-void returnBack();
+int addReturnBack();

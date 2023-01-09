@@ -25,7 +25,7 @@ int menuRead() {
     return decidedPath;
 }
 
-void returnBack() {
+void readReturnBack() {
     std::cout << std::endl;
     std::cout << "/*----------------------*/" << std::endl;
     std::cout << "Welcome back to the main menu" << std::endl;
@@ -108,7 +108,7 @@ int readScripts() {
                 break;
         };
     };
-    returnBack();
+    readReturnBack();
 
     return 0;
 }

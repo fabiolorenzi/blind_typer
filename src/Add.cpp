@@ -25,7 +25,7 @@ int menuAdd() {
     return decidedPath;
 }
 
-void returbBack() {
+void addReturbBack() {
     std::cout << std::endl;
     std::cout << "/*----------------------*/" << std::endl;
     std::cout << "Welcome back to the main menu" << std::endl;
@@ -83,12 +83,26 @@ void addSentence() {
     std::cout << "Created by:" << std::endl;
     std::cin.ignore();
     std::getline(std::cin, sentence.created_by);
+    while (sentence.created_by.size() == 0) {
+        std::cout << "Input empty! Please insert data:" << std::endl;
+        std::getline(std::cin, sentence.created_by);
+    };
+
     std::cout << std::endl;
     std::cout << "From:" << std::endl;
     std::getline(std::cin, sentence.from);
+    while (sentence.from.size() == 0) {
+        std::cout << "Input empty! Please insert data:" << std::endl;
+        std::getline(std::cin, sentence.from);
+    };
+
     std::cout << std::endl;
     std::cout << "Text:" << std::endl;
     std::getline(std::cin, sentence.text);
+    while (sentence.text.size() == 0) {
+        std::cout << "Input empty! Please insert data:" << std::endl;
+        std::getline(std::cin, sentence.text);
+    };
 
     std::string sentenceString;
     sentenceString = std::to_string(sentence.id) + '|' + sentence.created_by + '|' + sentence.from + '|' + sentence.text + '*';
@@ -105,12 +119,13 @@ int addScripts() {
     std::cout << "Add menu" << std::endl;
     std::cout << "/*------------------*/" << std::endl;
     int path {};
-    path = menuAdd();
-    if (path == 0) {
-        addSentence();
-    } else {
-        returnBack();
+    while (path == 0) {
+        path = menuAdd();
+        if (path == 0) {
+            addSentence();
+        };
     };
+    addReturbBack();
 
     return 0;
 }
