@@ -15,7 +15,7 @@ int mainMenu() {
     std::cout << std::endl;
     std::cout << "Please choose what to do:" << std::endl;
     while (decidedPath == -1) {
-        std::cout << "[0] Race, [1] Read, [2] Add, [3] Remove, [4] Exit" << std::endl;
+        std::cout << "[0] Race, [1] Read, [2] Add, [3] Reset, [4] Exit" << std::endl;
         std::cin >> decidedPath;
 
         if (decidedPath < 0 || decidedPath > 4) {
