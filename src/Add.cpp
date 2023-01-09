@@ -38,7 +38,7 @@ int getMaxId() {
     allSentences.open(sentencesPath);
 
     if (allSentences.fail()) {
-        return 0;
+        return 1;
     };
 
     int result {};
@@ -72,6 +72,7 @@ std::string getSentecesString() {
         resultingString.append(line);
         resultingString.append("*");
     };
+    allSentences.close();
     return resultingString;
 }
 
