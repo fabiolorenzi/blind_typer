@@ -1,6 +1,7 @@
 #include <iostream>
-#include <string>
+#include <vector>
 #include <fstream>
+#include <sstream>
 #include "../headers/Read.h"
 
 int menuRead() {
@@ -30,7 +31,8 @@ void returnBack() {
 }
 
 void readSentences() {
-    std::string sentencesPath = "data/sentences.csv";
+    std::cout << std::endl;
+    std::string sentencesPath = "data/sentences.txt";
     std::ifstream allSentences;
     allSentences.open(sentencesPath);
 
@@ -40,9 +42,21 @@ void readSentences() {
 
     while (allSentences.peek() != EOF) {
         std::string line;
-        getline(allSentences, line, ',');
-        std::cout << line << std::endl;
-    }
+        getline(allSentences, line, '*');
+
+        // Below here we are working on the single line
+        std::istringstream ss(line);
+        std::string part;
+        std::vector<std::string> lineData;
+        while (std::getline(ss, part, '|')) {
+            lineData.push_back(part);
+        };
+
+        std::cout << "Number: " << lineData[0] << std::endl;
+        std::cout << "Created by: " << lineData[1] << std::endl;
+        std::cout << "Text: " << lineData[2] << std::endl;
+        std::cout << std::endl;
+    };
     allSentences.close();
 }
 
