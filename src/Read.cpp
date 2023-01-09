@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "../headers/Read.h"
+#include "../headers/Sentence.h"
 
 int menuRead() {
     int decidedPath {-1};
@@ -51,10 +52,11 @@ void readSentences() {
         while (std::getline(ss, part, '|')) {
             lineData.push_back(part);
         };
+        Sentence sentence = Sentence(lineData[0], lineData[1], lineData[2]);
 
-        std::cout << "Number: " << lineData[0] << std::endl;
-        std::cout << "Created by: " << lineData[1] << std::endl;
-        std::cout << "Text: " << lineData[2] << std::endl;
+        std::cout << "ID: " << sentence.id << std::endl;
+        std::cout << "Created by: " << sentence.created_by << std::endl;
+        std::cout << "Text: " << sentence.text << std::endl;
         std::cout << std::endl;
     };
     allSentences.close();
