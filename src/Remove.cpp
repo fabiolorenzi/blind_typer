@@ -20,16 +20,20 @@ int menuRemove() {
     return decidedPath;
 }
 
-void removeReturbBack() {
+void removeReturnBack() {
     std::cout << std::endl;
     std::cout << "/*----------------------*/" << std::endl;
     std::cout << "Welcome back to the main menu" << std::endl;
     std::cout << "/*----------------------*/" << std::endl;
 }
 
-void removeSentence() {}
+void removeSentence() {
+    std::cout << "remove sentence" << std::endl;
+}
 
-void resetUser() {}
+void resetUser() {
+    std::cout << "reset user" << std::endl;
+}
 
 int removeScripts() {
     std::cout << std::endl;
