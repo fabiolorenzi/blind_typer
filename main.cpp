@@ -3,6 +3,7 @@
 #include "headers/Exit.h"
 #include "headers/Orders.h"
 #include "headers/Read.h"
+#include "headers/Remove.h"
 
 int main() {
     int path {};
@@ -20,7 +21,7 @@ int main() {
                 addScripts();
                 break;
             case 3:
-                std::cout << "Temporary 3" << std::endl;
+                removeScripts();
                 break;
         };
     };

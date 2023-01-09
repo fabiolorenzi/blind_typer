@@ -1,5 +1,8 @@
 #include <iostream>
+#include <fstream>
+#include <istream>
 #include "../headers/Remove.h"
+#include "../headers/Sentence.h"
 
 int menuRemove() {
     int decidedPath {-1};
@@ -32,7 +35,18 @@ void removeSentence() {
 }
 
 void resetUser() {
-    std::cout << "reset user" << std::endl;
+    int decision {};
+    std::cout << std::endl;
+    std::cout << "Are you sure you want to reset the user data?" << std::endl;
+    std::cout << "[0] Yes, [1] No" << std::endl;
+    std::cin >> decision;
+    if (decision == 0) {
+        std::ofstream userFile("data/user.txt");
+        std::string newUserString = "0|0|0|0|0";
+        userFile << newUserString;
+        std::cout << std::endl;
+        std::cout << "The user has been reset successfully." << std::endl;
+    };
 }
 
 int removeScripts() {
