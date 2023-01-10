@@ -56,6 +56,72 @@ std::vector<Sentence> getAllSentences() {
     return result;
 }
 
+int getAverage(int speed) {
+    std::string resultsPath = "data/results.txt";
+    std::ifstream resultsData;
+    resultsData.open(resultsPath);
+    if (resultsData.fail()) {
+        std::ofstream resultsFile("data/results.txt");
+        resultsFile << std::to_string(speed);
+        resultsFile.close();
+        return speed;
+    } else {
+        std::vector<int> tempResults;
+        std::string temp;
+        while (std::getline(resultsData, temp, '|')) {
+            tempResults.push_back(std::stoi(temp));
+        };
+
+        // The code below is to update the file
+        std::string resultString;
+        int total {};
+        for(int res : tempResults) {
+            resultString.append(std::to_string(res) + '|');
+            total += res;
+        };
+        resultString.append(std::to_string(speed));
+        std::ofstream resultsFile("data/results.txt");
+        resultsFile << resultString;
+        resultsFile.close();
+        
+        // The code below is the real calculation
+        total += speed;
+        return (total / (tempResults.size() + 1));
+    };
+};
+
+void updateUser(int speed) {
+    std::string userPath = "data/user.txt";
+    std::ifstream userData;
+    userData.open(userPath);
+    User user;
+
+    if (userData.fail()) {
+        user = User(0, speed, speed, speed, 1);
+    } else {
+        std::vector<int> tempValues;
+        std::string temp;
+        while (std::getline(userData, temp, '|')) {
+            tempValues.push_back(std::stoi(temp));
+        };
+        user = User(tempValues[0], tempValues[1], tempValues[2], tempValues[3], tempValues[4]);
+        user.averageSpeed = getAverage(speed);
+        if (user.minSpeed > speed || user.minSpeed == 0) {
+            user.minSpeed = speed;
+        };
+        if (user.maxSpeed < speed) {
+            user.maxSpeed = speed;
+        };
+        user.sessionsFinished += 1;
+        userData.close();
+    };
+    std::ofstream userFile("data/user.txt");
+    std::string userString = std::to_string(user.id) + '|' + std::to_string(user.minSpeed) + '|' + std::to_string(user.maxSpeed) + '|' + std::to_string(user.averageSpeed) + '|' + std::to_string(user.sessionsFinished);
+    userFile << userString;
+    userFile.close();
+    std::cout << "Session saved successfully" << std::endl;
+}
+
 void countdown() {
     int time {5};
     while (time > 0) {
@@ -90,7 +156,12 @@ void raceSequence() {
             // The code below is for the result calculations
             std::chrono::duration<double> timeDifference = end - start;
             int timeResult = int(timeDifference.count());
-            std::cout << "result" << timeResult << std::endl;
+            float speed = float(sentence.text.length() / 5) / (float(timeResult) / float(60));
+            std::cout << std::endl;
+            std::cout << "You time is: " << timeResult << "s" << std::endl;
+            std::cout << "Your speed was: " << int(speed) << "wpm" << std::endl;
+            updateUser(int(speed));
+            std::cout << std::endl;
         } else {
             std::cout << "There are some mistakes in the typing :(" << std::endl;
         };
