@@ -2,6 +2,7 @@
 #include "headers/Add.h"
 #include "headers/Exit.h"
 #include "headers/Orders.h"
+#include "headers/Race.h"
 #include "headers/Read.h"
 #include "headers/Remove.h"
 
@@ -12,7 +13,7 @@ int main() {
         path = mainMenu();
         switch(path) {
             case 0:
-                std::cout << "Temporary 0" << std::endl;
+                raceScripts();
                 break;
             case 1:
                 readScripts();
