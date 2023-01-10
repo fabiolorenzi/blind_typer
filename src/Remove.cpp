@@ -128,6 +128,7 @@ void resetUser() {
         std::ofstream userFile("data/user.txt");
         std::string newUserString = "0|0|0|0|0";
         userFile << newUserString;
+        remove("data/results.txt");
         std::cout << std::endl;
         std::cout << "The user has been reset successfully." << std::endl;
     };
